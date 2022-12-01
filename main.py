@@ -4,14 +4,18 @@ import math, random
 from constants import *
 
 class SudokuGenerator:
-    def __init__(self, row_length, removed_cells):
-        pass
-    
+    def __init__(self, row_length=9, removed_cells= 30):
+        self.row_length = row_length
+        self.remove_cells = removed_cells
+        self.box_length = math.sqrt(row_length)
     def get_board(self):
-        pass
-    
+        return [["-" for i in range(self.row_length)] for j in range(9)]
+
     def print_board(self):
-        pass
+        for row in self.get_board():
+            for col in row:
+                print(col, end=" ")
+            print()
     
     def valid_in_row(self, row, num):
         pass
