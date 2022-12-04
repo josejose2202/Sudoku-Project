@@ -1,0 +1,57 @@
+import pygame
+from constant import *
+from cell import *
+
+class Board:
+    def __init__(self,width, height, screen, difficulty):
+        self.width = width
+        self.height = height
+        self.screen = screen
+        self.board = self.initialize_board()
+        self.difficulty = difficulty
+
+    def draw(self):
+        # draw horizontal lines
+        for i in range(1, 10):
+            pygame.draw.line(
+
+                self.screen,
+                LINE_COLOR,
+                (0, i * SQUARE_SIZE),
+                (WIDTH, i * SQUARE_SIZE),
+                LINE_WIDTH
+            )
+
+        # draw vertical lines
+        for j in range(1, 10):
+            pygame.draw.line(
+                self.screen,
+                LINE_COLOR,
+                (j * SQUARE_SIZE, 0),
+                (j * SQUARE_SIZE, HEIGHT),
+                LINE_WIDTH
+            )
+        for i in range(3, 10,3):
+            pygame.draw.line(
+                self.screen,
+                LINE_COLOR2,
+                (0, i * SQUARE_SIZE),
+                (WIDTH, i * SQUARE_SIZE),
+                LINE_WIDTH2
+            )
+
+        # draw vertical lines
+        for j in range(3, 10,3):
+            pygame.draw.line(
+                self.screen,
+                LINE_COLOR2,
+                (j * SQUARE_SIZE, 0),
+                (j * SQUARE_SIZE, HEIGHT),
+                LINE_WIDTH2
+            )
+
+        # draw cells
+        for i in range(self.rows):
+            for j in range(self.cols):
+                self.cells[i][j].draw(self.screen)
+            pygame.display.update()

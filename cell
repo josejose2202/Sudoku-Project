@@ -1,0 +1,27 @@
+import pygame
+from constant import *
+
+class Cell:
+    def __init__(self, value, row, col, screen):
+        self.value = value
+        self.row = row
+        self.col = col
+        self.screen = screen
+
+
+    def set_cell_value(self, value):
+        self.value = value
+
+    def set_sketched_value(self,value):
+        self.value = value
+
+    def draw(self):
+        chip_font = pygame.font.Font(None, NUM_FONT)
+        chip_surf = chip_font.render(self.value, 0, COLOR)
+        value = int(self.value)
+
+        if 0 < value < 10:
+            if value == int(self.value):
+                chip_rect = chip_surf.get_rect(
+                    center=(SQUARE_SIZE * self.col + SQUARE_SIZE // 2, SQUARE_SIZE * self.row + SQUARE_SIZE // 2))
+                self.screen.blit(chip_surf, chip_rect)
