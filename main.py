@@ -137,16 +137,14 @@ def draw_game_over(screen):
 
     screen.blit(bg, (0, 30))
 
-    if winner != 0:
+    if winner:
         text = 'Game Won!'
     else:
         text = "Game Over :("
 
-    game_over_surf = game_over_font.render(text, 0, CROSS_COLOR)
-    game_over_rect = game_over_surf.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 125))
-    screen.blit(game_over_surf, game_over_rect)
+    outline_text(WIDTH//2, HEIGHT//2 - 135, text)
 
-    if winner != 0:
+    if winner:
         exit_text = button_font.render("EXIT", 0, (255, 255, 255))
         exit_text_surf = pygame.Surface((exit_text.get_size()[0] + 20, exit_text.get_size()[1] + 20))
         exit_text_surf.fill((66, 66, 66))
@@ -165,7 +163,7 @@ def draw_game_over(screen):
         if event.type == pygame.QUIT:
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if winner != 0:
+            if winner:
                 if exit_text_rect.collidepoint(event.pos):
                     exit()
             else:
@@ -195,6 +193,7 @@ if __name__ == "__main__":
     game_start_screen(screen)
     
     game_over = True
+    winner = True
 
     # game is over
     while True:
