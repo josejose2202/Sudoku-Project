@@ -134,7 +134,7 @@ class SudokuGenerator:
 
 
 
-    def generate_sudoku(self,size, removed):
+def generate_sudoku(size, removed):
         sudoku = SudokuGenerator(size, removed)
         sudoku.fill_values()
         board = sudoku.get_board()
@@ -142,7 +142,6 @@ class SudokuGenerator:
         board = sudoku.get_board()
         sudoku.print_board()
         return board
-
 
 
 
